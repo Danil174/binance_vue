@@ -1,27 +1,27 @@
 <template>
   <div>
-    <table class="table">
-      <caption class="table__caption">{{ name }}</caption>
-      <thead class="table__thead">
-        <tr class="table__row">
-          <th class="table__cell">Price</th>
-          <th class="table__cell">Ammount</th>
-          <th class="table__cell table__cell--hide-in-mob">Total</th>
-        </tr>
-      </thead>
-    </table>
+    <div class="table">
+      <div class="table__thead">
+        <h3 class="table__caption">{{ name }}</h3>
+        <p class="table__row">
+          <span class="table__cell">Price</span>
+          <span class="table__cell">Ammount</span>
+          <span class="table__cell table__cell--hide-in-mob">Total</span>
+        </p>
+      </div>
+    </div>
     <div class="table__wrapper">
-      <table class="table">
-        <tbody class="table__tbody">
-          <tr class="table__row" v-for="(item, index) in data" :key="index">
-            <td class="table__cell">{{ item[0] }}</td>
-            <td class="table__cell">{{ item[1] }}</td>
-            <td class="table__cell table__cell--hide-in-mob">
+      <div class="table">
+        <div class="table__tbody">
+          <p class="table__row" v-for="(item, index) in data" :key="index">
+            <span class="table__cell">{{ item[0] }}</span>
+            <span class="table__cell">{{ item[1] }}</span>
+            <span class="table__cell table__cell--hide-in-mob">
               {{ item[0] * item[1] }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -34,9 +34,7 @@ export default {
 </script>
 <style lang="less" scoped>
   .table {
-    border-collapse: collapse;
-    border: 2px solid rgba(0, 0, 0, 0.5);
-    width: 100%;
+    width: 48vw;
     text-align: center;
 
     &__wrapper {
@@ -57,7 +55,15 @@ export default {
     }
 
     &__caption {
+      padding: 0;
+      margin: 0;
       border-bottom: 0;
+    }
+
+    &__row {
+      padding: 0;
+      margin: 0;
+      display: flex;
     }
 
     &__caption,
@@ -65,15 +71,27 @@ export default {
       border: 1px solid rgba(0, 0, 0, 0.5);
       padding: 10px 15px;
     }
+
+    &__cell {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 30%;
+    }
   }
 
   @media (max-width: 790px) {
+    .table__caption {
+      width: 69%;
+    }
     .table__cell--hide-in-mob {
       display: none;
     }
   }
 
   @media (max-width: 535px) {
+    .table__caption {
+      width: 58%;
+    }
     .table {
       font-size: 12px;
     }
