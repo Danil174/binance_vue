@@ -18,19 +18,35 @@ export default {
   data: () => ({
     symbol: 'BTCUSDT',
     asks: [],
-    bids: []
+    bids: [],
+    stream: null
   }),
   async created () {
-    await this.snapshot()
+    await this.getOrderBook()
+    this.setStream()
     this.$bus.$on('symbol', symbol => {
       this.symbol = symbol
+      this.stream.close()
+      this.setStream()
     })
   },
   methods: {
-    async snapshot () {
+    async getOrderBook () {
       const { bids, asks } = await this.$sdk.get(this.symbol)
       this.asks = asks.reverse()
       this.bids = bids.reverse()
+    },
+    setStream () {
+      this.stream = this.$sdk.subscribe(this.symbol)
+      this.stream.onmessage = async event => {
+        const { a: asks, b: bids } = JSON.parse(event.data)
+        asks.reverse()
+        bids.reverse()
+        this.asks.splice(this.asks.length - asks.length, asks.length)
+        this.bids.splice(this.bids.length - bids.length, bids.length)
+        this.asks = [...asks, ...this.asks]
+        this.bids = [...bids, ...this.bids]
+      }
     }
   }
 }

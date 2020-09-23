@@ -45,6 +45,7 @@ export default {
       width: 100%;
       border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 
+      &:active,
       &:hover {
         overflow: auto;
       }
@@ -66,9 +67,18 @@ export default {
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 790px) {
     .table__cell--hide-in-mob {
       display: none;
+    }
+  }
+
+  @media (max-width: 535px) {
+    .table {
+      font-size: 12px;
+    }
+    .table__cell {
+      padding: 6px 6px;
     }
   }
 </style>
