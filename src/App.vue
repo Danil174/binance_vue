@@ -12,6 +12,8 @@
 
 <script>
 import Navbar from '../src/components/Navbar'
+import Controls from '../src/components/Controls'
+import OrderBook from '../src/components/OrderBook'
 export default {
   name: 'app',
   data: () => ({
@@ -27,8 +29,8 @@ export default {
   },
   components: {
     Navbar,
-    Controls: () => import(/* webpackChunkName: "about" */ '../src/components/Controls'),
-    OrderBook: () => import(/* webpackChunkName: "about" */ '../src/components/OrderBook')
+    Controls,
+    OrderBook
   }
 }
 </script>
