@@ -5,7 +5,7 @@
         <h3 class="table__caption">{{ name }}</h3>
         <p class="table__row">
           <span class="table__cell">Price</span>
-          <span class="table__cell">Ammount</span>
+          <span class="table__cell">Amount</span>
           <span class="table__cell table__cell--hide-in-mob">Total</span>
         </p>
       </div>
