@@ -23,11 +23,11 @@ export default {
   }),
   async created () {
     await this.getOrderBook()
-    // this.setStream()
+    this.setStream()
     this.$bus.$on('symbol', symbol => {
       this.symbol = symbol
-      // this.stream.close()
-      // this.setStream()
+      this.stream.close()
+      this.setStream()
     })
   },
   methods: {
