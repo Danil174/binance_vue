@@ -22,7 +22,6 @@ export default {
   }),
   methods: {
     changeSymbol () {
-      console.log(this.currentSymbol)
       this.$bus.$emit('symbol', this.currentSymbol)
     }
   }

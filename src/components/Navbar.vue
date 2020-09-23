@@ -40,6 +40,7 @@ export default {
     &__list {
       margin: 0;
       padding: 0;
+      list-style: none;
 
       display: flex;
     }
@@ -48,7 +49,6 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      list-style: none;
       height: 36px;
       padding: 0 8px;
       cursor: pointer;

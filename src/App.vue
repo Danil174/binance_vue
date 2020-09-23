@@ -22,7 +22,6 @@ export default {
   }),
   computed: {
     currentComponent () {
-      console.log(this.tabs.currentTab)
       return this.tabs.currentTab
     }
   },
