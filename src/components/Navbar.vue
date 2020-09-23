@@ -2,27 +2,31 @@
 <header class="header">
   <nav class="header__nav">
     <ul class="header__list">
-      <router-link
-        tag="li"
-        to="/"
-        exact
-        active-class="header__link--active"
-        class="header__link"
+      <li
+        v-for="tab in tabs.tabsArr"
+        :key="tab"
+        :class="['header__link', {'header__link--active': tabs.currentTab === tab}]"
+        @click="changeTab(tab)"
       >
-        OrderBook
-      </router-link>
-      <router-link
-        tag="li"
-        to="/controls"
-        active-class="header__link--active"
-        class="header__link"
-      >
-        Controls
-      </router-link>
+        {{ tab }}
+      </li>
     </ul>
   </nav>
 </header>
 </template>
+
+<script>
+export default {
+  props: ['tabs'],
+  name: 'NavBar',
+  data: () => ({}),
+  methods: {
+    changeTab (tab) {
+      this.$emit('changeTab', tab)
+    }
+  }
+}
+</script>
 
 <style lang="less" scoped>
   .header {
